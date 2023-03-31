@@ -7,5 +7,8 @@ const homeController=require('../controllers/home_controller');
 // console.log('ROutes loaded');
 //http request for home use different function name for different action 
 router.get('/',homeController.home);
+router.use('/users',require('./users'));
+//for any further routes access from here
+//router.use('/routeName',require('./routerfile));
 
 module.exports=router;

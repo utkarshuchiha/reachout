@@ -5,6 +5,9 @@ const app=express();
 //use express router defined in routes/index.js 
 //middleware
 app.use('/',require('./routes'));
+//setup the view engine
+app.set('view engine','ejs');
+app.set('views','./views');
 
 app.listen(port,function(err){
     if(err){
