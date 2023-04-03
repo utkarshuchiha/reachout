@@ -10,4 +10,8 @@ router.get('/sign-in',usersCOntroller.signIn);
 
 router.post('/create',usersCOntroller.create);
 
+router.post('/create-session',usersCOntroller.createSession);
+
+router.post('/logout',usersCOntroller.logout);
+
 module.exports=router;

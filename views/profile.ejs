@@ -1,3 +1,6 @@
 <link rel="stylesheet" href="/css/user_profile.css">
-        <h1>THIS PROFILE BELONGS TO <%=p_name%></h1>
- 
+        <h1>THIS PROFILE BELONGS TO <%=user.name%> and with email <%=user.email%></h1>
+
+ <form action="/users/logout" method="post">
+        <input type="submit" value="Sign out">
+ </form>
