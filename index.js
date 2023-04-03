@@ -1,8 +1,14 @@
 const express=require('express');
 const expressLayouts=require('express-ejs-layouts');
+const cookieParser=require('cookie-parser');
 const db=require('./config/mongoose');
 const port=8000;
 const app=express();
+
+//read the data send 
+app.use(express.urlencoded());
+//reading cookies
+app.use(cookieParser());
 
 //tell the app to use layouts done before rendering any views
 app.use(expressLayouts);
