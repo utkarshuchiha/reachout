@@ -17,12 +17,15 @@ app.use(express.static('./assets'));
 //extract style and script from subpages into the layout
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
-//use express router defined in routes/index.js 
-//middleware
-app.use('/',require('./routes'));
+
 //setup the view engine
 app.set('view engine','ejs');
 app.set('views','./views');
+
+
+//use express router defined in routes/index.js 
+//middleware
+app.use('/',require('./routes'));
 
 app.listen(port,function(err){
     if(err){
