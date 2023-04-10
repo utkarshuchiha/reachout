@@ -2,8 +2,18 @@ const express=require('express');
 const expressLayouts=require('express-ejs-layouts');
 const cookieParser=require('cookie-parser');
 const db=require('./config/mongoose');
+//used for session cookie
+const session=require('express-session');
+const passport=require('passport');
+const passportLocal=require('./config/passport-local-strategy');
+const MongoStore=require('connect-mongo');
+
 const port=8000;
 const app=express();
+
+
+
+
 
 //read the data send 
 app.use(express.urlencoded());
@@ -22,6 +32,27 @@ app.set('layout extractScripts',true);
 app.set('view engine','ejs');
 app.set('views','./views');
 
+app.use(session({
+    name:'REACHOUT',
+    //change secret before deplyment
+    secret:"kuchbhi", //secret key used to sign the session ID cookie
+    saveUninitialized:false, //dont create session until something is stored
+    resave:false, // dont save the session data if not modified
+    cookie:{
+        maxAge: (1000*60*100)
+    },
+    store:new MongoStore({
+        mongoUrl:'mongodb://localhost/REACHOUT_dev',
+        autoRemove:'disabled'
+    },function(err){
+        console.log(err);
+    })
+   
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 //use express router defined in routes/index.js 
 //middleware

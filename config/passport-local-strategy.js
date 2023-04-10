@@ -3,6 +3,8 @@ const passport=require('passport');
 const localStrategy=require('passport-local').Strategy;
 
 const User=require('../models/user');
+
+
 //authentication using passport
 passport.use(new localStrategy({
     usernameField:'email'
@@ -38,5 +40,24 @@ passport.deserializeUser(function(id,done){
         return done(null,user);
     });
 });
+//used as middleware
+passport.checkAuthentication=function(req,res,next){
+   
+    //if the user is signed in ,then pass on th erequest to next func controller action
+    if(req.isAuthenticated()){
+        return next();
+    }
+    //if the user is not signed in
+    return res.redirect('users/sign-in');
+}
+
+passport.setAuthenticatedUser=function(req,res,next){
+   
+    if(req.isAuthenticated()){
+        //req.user contains the current signed in user from the session cookie and sending it to locals for views
+        res.locals.user=req.user;
+    }
+    next();
+}
 
 module.exports=passport;
