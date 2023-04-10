@@ -48,3 +48,12 @@ module.exports.create=(req,res)=>{
 module.exports.createSession=(req,res)=>{
     return res.redirect('/');
 }
+
+module.exports.destroySession=function(req,res){
+    req.logout(function(err){
+        if(err){
+            console.log(err);
+        }
+    });
+    return res.redirect('/');
+}
