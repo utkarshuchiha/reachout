@@ -1,0 +1,39 @@
+
+header{
+    display: flex;
+    background-color:#ffffff;
+    width: 100vw;
+    height: 77px;
+    justify-content: space-between;
+    #logo{
+        color: blue;
+        font-weight: bolder;
+        font-size: 40px;
+        margin-top: 15px;
+    }
+    input{ #input-box{
+        border-radius: 25px;
+        width:25%;
+        height: 50%;
+    }
+    } 
+
+    ul{ 
+       
+        
+        li{
+            list-style: none;
+            display: inline-block;
+            size:30px;
+            padding:5px;
+            a{
+                text-decoration: none;
+                font-size: 30px;
+
+            }
+            
+
+        }
+    }
+    
+}

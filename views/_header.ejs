@@ -1,12 +1,18 @@
+<link rel="stylesheet" href="/css/header.css">
 <header>
-    PAge HEader
+    <p id="logo">REACHOUT</p>
+
+    <input type="search" name="" id="input-box" style="    border-radius: 25px;
+    width: 25%;
+    height: 50%;
+    margin-top: 17px;" placeholder=" search ....">
 
     <ul>
         <% if(locals.user){%>
             <li>
                 <a href="/users/profile"><%=user.name%></li></a>
             <li>
-                <a href="/users/sign-out">Sign Out</a>
+                <a href="/users/sign-out">SignOut</a>
             </li>
         <% }else{%>
             <li>
