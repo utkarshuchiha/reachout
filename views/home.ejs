@@ -5,5 +5,19 @@
     <textarea name="content" cols="30" rows="3" placeholder=" type here..."></textarea>
     <input type="submit" value="Post"> 
 </form>
+
+<div id="posts-list-container">
+    <ul>
+        <% for(posts of posts){ %>
+            <p>
+            <li><%=posts.content%>
+            <br>
+            <small><%=posts.user.name%></small>
+            </li>
+            </p>
+        <%}%>    
+    </ul>
+
+</div>
 </section>
    
