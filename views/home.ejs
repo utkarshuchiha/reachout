@@ -13,11 +13,17 @@
     <ul>
         <% for(post of posts){ %>
             <p>
+
             <li><%=post.content%>
+                <% if(locals.user && locals.user.id==post.user.id){%>
+                <small>
+                    <a href="/posts/destroy/<%=post.id%>">X</a>
+                </small>
+                <%}%>
             <br>
             <small><%=post.user.name%></small>
             </p>
-            <div class=""post-comments>
+            <div class="post-comments">
                 <%if(locals.user){%>
                     <form action="/comments/create" method="post">
                     <input type="text" name="content" placeholder="type here to add comment">
@@ -32,6 +38,12 @@
                         <% for(comment of post.comments){ %>
                             <p>
                                 <%=comment.content%>
+                              
+                              <%if(locals.user && (locals.user.id==comment.user.id||post.user.id==locals.user.id)){%>  
+                                <small>
+                               <a href="/comments/destroy/<%=comment.id%>">X</a> 
+                                <%}%>
+                                </small>
                                 <br>
                                 <small><%=comment.user.name%></small>
                             </p>
