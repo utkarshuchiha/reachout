@@ -33,7 +33,8 @@ app.use(cookieParser());
 app.use(expressLayouts);
 //set the statics 
 app.use(express.static('./assets'));
-//extract style and script from subpages into the layout
+app.use('/uploads',express.static(__dirname +'/uploads'))
+//extract style and script from subpages into the layout;
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 
